@@ -25,7 +25,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4 # Use latest checkout version
       - name: Deploy to Netlify
-        uses: netlify/actions@latest # Or latest from marketplace (e.g., v4)
+        uses: nwtgck/actions-netlify@v3.0 # Or latest from marketplace (e.g., v4)
         with:
           publishDir: ./ # Important: Matches your --dir flag
           netlifySiteId: ${{ secrets.NETLIFY_SITE_ID }}
