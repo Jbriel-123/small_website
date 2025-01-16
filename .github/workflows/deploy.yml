@@ -1,0 +1,21 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches: [ main ] # Oder master, falls dein Hauptbranch so heißt
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Netlify
+        uses: netlify/actions@v1.0.0
+        id: netlify
+        with:
+          publishDir: './' # Das Verzeichnis, das deployed werden soll (hier das Root-Verzeichnis)
+          netlifySiteId: ${{ secrets.NETLIFY_SITE_ID }}
+          netlifyToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
